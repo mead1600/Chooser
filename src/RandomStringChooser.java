@@ -1,17 +1,20 @@
+import java.util.ArrayList;
+
 public class RandomStringChooser {
 
-    private String[] arrays;
+    private ArrayList<String> words;
 
-    public RandomStringChooser(String[] arrays){
-        this.arrays = arrays;
+    public RandomStringChooser(String[] wordArray){
+        words = new ArrayList<String> ();
+        for (String singleWord : wordArray){
+            words.add(singleWord);
+        }
     }
 
     public String getNext(){
-        int index = (int)(Math.random()*this.arrays.length);
-        String currentString = "";
-        if(this.arrays[index] == null){
-            return "NONE";
+        if (words.size() > 0){
+            return words.remove((int)(Math.random() * words.size()));
         }
-
+        return "NONE";
     }
 }
